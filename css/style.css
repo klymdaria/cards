@@ -609,16 +609,21 @@ body {
 
 .ba-card {
   padding: 40px 20px;
-  -webkit-perspective: 900px;
-  perspective: 900px; }
+  -webkit-perspective: 500px;
+  perspective: 500px;
+  -webkit-perspective: 700px;
+  perspective: 700px; }
   .ba-card div {
     -webkit-transform-style: preserve-3d;
     transform-style: preserve-3d;
-    -webkit-transition: -webkit-transform 0.3s ease-in;
-    transition: -webkit-transform 0.3s ease-in;
-    -o-transition: transform 0.3s ease-in;
-    transition: transform 0.3s ease-in;
-    transition: transform 0.3s ease-in, -webkit-transform 0.3s ease-in; }
+    -webkit-transition: 0.4s ease-in;
+    -o-transition: 0.4s ease-in;
+    transition: 0.4s ease-in;
+    -webkit-transition-property: -webkit-transform;
+    transition-property: -webkit-transform;
+    -o-transition-property: transform;
+    transition-property: transform;
+    transition-property: transform, -webkit-transform; }
   .ba-card-front {
     background-color: #fff;
     width: 150px;
@@ -634,12 +639,31 @@ body {
     flex-direction: row;
     -webkit-box-pack: justify;
     -ms-flex-pack: justify;
-    justify-content: space-between; }
+    justify-content: space-between;
+    z-index: 1;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden; }
+  .ba-card-back {
+    position: absolute;
+    top: 40px;
+    bottom: 0;
+    left: 20px;
+    right: 0;
+    width: 150px;
+    height: 200px;
+    padding: 10px 10px;
+    border-radius: 20px;
+    background: #7c6eab url(../img/back.jpg) 50% 50% no-repeat;
+    -webkit-transform: rotateY(-180deg) translateZ(0);
+    transform: rotateY(-180deg) translateZ(0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden; }
   .ba-card:hover .ba-card-front {
     -webkit-transform: rotateY(-180deg);
-    transform: rotateY(-180deg);
-    background: #7c6eab url(../img/back.jpg) 50% 50% no-repeat;
-    color: transparent; }
+    transform: rotateY(-180deg); }
+  .ba-card:hover .ba-card-back {
+    -webkit-transform: rotateY(0);
+    transform: rotateY(0); }
   .ba-card--red {
     color: red; }
     .ba-card--red svg {

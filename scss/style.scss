@@ -17,12 +17,14 @@ body {
 
 .ba-card {
 	padding: 40px 20px;
-	perspective: 900px;
+	perspective: 500px;
+	perspective: 700px;
 
-	div{
+	div {
 
 		transform-style: preserve-3d;
-		transition: transform 0.3s ease-in;
+		transition: 0.4s ease-in;
+		transition-property: transform;
 	}
 
 
@@ -35,17 +37,35 @@ body {
 		display: flex;
 		flex-direction: row;
 		justify-content: space-between;
+		z-index: 1;
+		backface-visibility: hidden;
 	}
-	
+
+	&-back {
+		position: absolute;
+		top: 40px;
+		bottom: 0;
+		left: 20px;
+		right: 0;
+		width: 150px;
+		height: 200px;
+		padding: 10px 10px;
+		border-radius: 20px;
+
+		background: #7c6eab url(../img/back.jpg) 50% 50% no-repeat;
+
+		transform: rotateY(-180deg) translateZ(0);
+		backface-visibility: hidden;
+	}
 
 	&:hover {
-		.ba-card-front{
-			
+		.ba-card-front {
 			transform: rotateY(-180deg);
-			background: #7c6eab url(../img/back.jpg) 50% 50% no-repeat;
-			color: transparent;
 		}
 
+		.ba-card-back {
+			transform: rotateY(0);
+		}
 	}
 
 	&--red {
@@ -78,7 +98,7 @@ body {
 			align-items: center;
 		}
 
-		&-pick{
+		&-pick {
 			padding: 0;
 			margin: 0;
 		}
@@ -93,20 +113,18 @@ body {
 	}
 }
 
-.ba-markers{
+.ba-markers {
 	width: 22px;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
 	align-content: center;
 
-	svg{
+	svg {
 		margin-bottom: 15px;
 	}
 
-	&--second{
+	&--second {
 		padding-bottom: 30px;
 	}
 }
-
-
